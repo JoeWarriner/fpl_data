@@ -1,12 +1,7 @@
 '''
 SCRIPT TO SEED THE DATABASE AT THE START OF A SEASON
 
-STEPS:
-- Download data directory from: https://github.com/vaastav/Fantasy-Premier-League
-- Copy it into inputs folder.
-- Run this script.
-- Run:
-    - manage.py loaddata <fixturename>
+CURRENTLY HAS SOME HARDCODED STUFF THAT NEEDS GETTING RID OF
 '''
 from distutils.command.build import build
 from time import thread_time_ns
@@ -36,8 +31,6 @@ class Command(BaseCommand):
         merged_seasons_2122 = merged_seasons.query('season_x == "2021-22"')
 
         all_teams = []
-
-
 
         for team in api_data['teams']:
             all_teams.append(
