@@ -7,7 +7,7 @@ class Team(models.Model):
     this_season_id = models.IntegerField()
 
     def __str__(self) -> str:
-        return self.team_name
+        return self.name
 
 
 class Player(models.Model):
