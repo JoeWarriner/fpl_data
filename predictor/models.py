@@ -5,6 +5,8 @@ class Team(models.Model):
     name = models.CharField(max_length=200)
     short_name = models.CharField(max_length=5)
     this_season_id = models.IntegerField()
+    strength_attack = models.IntegerField()
+    strength_defence = models.IntegerField()
 
     def __str__(self) -> str:
         return self.name

@@ -2,6 +2,7 @@ from turtle import position
 from django.shortcuts import render
 from django.http import HttpResponse
 from predictor.models import Player
+from predictor.regression_predictor import generate_predictions
 
 def top(request):
     context = {
@@ -13,6 +14,11 @@ def top(request):
     context['positions']['Goalkeepers'] = list(Player.objects.filter(position='GK')[:3])
 
     return render(request, 'predictor/topplayers.html', context)
+
+
+def testing(request):
+    generate_predictions()
+    return HttpResponse('Request received')
 
 
 

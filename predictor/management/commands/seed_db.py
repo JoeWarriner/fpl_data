@@ -3,6 +3,7 @@ SCRIPT TO SEED THE DATABASE AT THE START OF A SEASON
 
 CURRENTLY HAS SOME HARDCODED STUFF THAT NEEDS GETTING RID OF
 '''
+
 from distutils.command.build import build
 from time import thread_time_ns
 from predictor.models import Team, Player, PlayerFixture
@@ -27,7 +28,7 @@ class Command(BaseCommand):
         PlayerFixture.objects.all().delete()
         
         merged_seasons =  pd.read_csv('inputs/data/cleaned_merged_seasons.csv')
-        merged_seasons_2021 = merged_seasons.query('season_x == "2020-21"')
+        merged_seasons= merged_seasons.query('season_x == "2020-21" | season_x == "2021-22"' )
         merged_seasons_2122 = merged_seasons.query('season_x == "2021-22"')
 
         all_teams = []
@@ -37,7 +38,10 @@ class Command(BaseCommand):
                 Team(
                     name = team['name'],
                     short_name = team['short_name'],
-                    this_season_id = team['id']
+                    this_season_id = team['id'],
+                    strength_attack = team['strength_attack_home'],
+                    strength_defence = team['strength_defence_home']
+
                 )
             )
 
@@ -53,7 +57,9 @@ class Command(BaseCommand):
                 Team.objects.create(
                     name = row['name'],
                     short_name = row['short_name'],
-                    this_season_id = 9999
+                    this_season_id = 9999,
+                    strength_attack = team['strength_attack_home'],
+                    strength_defence = team['strength_defence_home']
                 )
 
 
@@ -88,19 +94,19 @@ class Command(BaseCommand):
 
         for player in Player.objects.all().iterator():
             player: Player
-            temp_df = merged_seasons_2021.query(f'name == "{player.first_name} {player.second_name}"')
-            if len(temp_df.index) <= 38:
+            temp_df = merged_seasons.query(f'name == "{player.first_name} {player.second_name}"')
+            if len(temp_df.index) <= 76:
                 for _, row in temp_df.iterrows():
                     player_fixtures.append(PlayerFixture(
                         points_scored = row['total_points'],
-                        season = 20,
+                        season = int(row['season_x'][2:4]),
                         gameweek = row['GW'],
                         player = player,
                         team_for = Team.objects.get(name = row['team_x']),
                         team_against = Team.objects.get(name = row['opp_team_name']),
                         position = row['position']
             ))
-        
+
         PlayerFixture.objects.bulk_create(player_fixtures)
 
 
