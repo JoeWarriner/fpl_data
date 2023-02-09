@@ -23,6 +23,7 @@
                     <th scope="col">First Name</th>
                     <th scope="col">Last Name</th>
                     <th scope="col">Team</th>
+                    <th scope="col">Expected Points</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -32,6 +33,7 @@
                     <td>{{ player.first_name }}</td>
                     <td>{{ player.second_name }}</td>
                     <td>{{ player.current_team.name }}</td>
+                    <td>{{ player.expected_points }}</td>
                   </tr>
                   {% endfor %}
                 </tbody>

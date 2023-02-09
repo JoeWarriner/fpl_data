@@ -149,10 +149,6 @@ def generate_predictions():
     mid_results.summary()
     print(mid_results.summary())
 
-    # plt.clf()
-    # plt.hist(mid_results.resid)
-    # plt.show()
-
     test_exog = add_constant(midfielders_test[['rolling_points', 'opp_team_stat', 'rolling_points * opp_team_stat']])
 
     mid_predictions = mid_results.predict(test_exog)
