@@ -28,7 +28,7 @@
                 <tbody>
                   {% for player in players%}
                   <tr>
-                    <th scope="row">1</th>
+                    <th scope="row">{{ forloop.counter }}</th>
                     <td>{{ player.first_name }}</td>
                     <td>{{ player.second_name }}</td>
                     <td>{{ player.current_team.name }}</td>
