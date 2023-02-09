@@ -3,15 +3,17 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from predictor.models import Player
 from predictor.regression_predictor import generate_predictions
+from predictor.basic_predictor import get_latest_predictions
+
 
 def top(request):
+    get_latest_predictions()
     context = {
         'positions':{} 
     }
-    context['positions']['Strikers'] = list(Player.objects.filter(position='FWD').order_by('expected_points')[:3])
-    context['positions']['Midfielders'] = list(Player.objects.filter(position='MID').order_by('expected_points')[:3])
-    context['positions']['Defenders'] = list(Player.objects.filter(position='DEF').order_by('expected_points')[:3])
-    context['positions']['Goalkeepers'] = list(Player.objects.filter(position='GK').order_by('expected_points')[:3])
+    for position in ['FWD','MID','DEF','GK']: 
+        context['positions'][position] = list(Player.objects.filter(position=position).order_by('-expected_points')[:10])
+
 
     return render(request, 'predictor/topplayers.html', context)
 
