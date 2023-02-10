@@ -1,3 +1,5 @@
+## FPL Predictions - Learning Project
+
 This is a learning project that I add to from time to time. I've mainly used it to explore technologies I'm using at work, or that I'm just curious about.
 
 Long term the idea is to predict scores in Fantasy Premier League (and maybe use some kind of optimisation algorithm to actually pick a team / select an optimal trade).
