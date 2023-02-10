@@ -2,7 +2,7 @@ from turtle import position
 from django.shortcuts import render
 from django.http import HttpResponse
 from predictor.models import Player
-from predictor.regression_predictor import generate_predictions
+from predictor.prediction_models.regression_predictor import generate_predictions
 from predictor.basic_predictor import get_latest_predictions
 
 
@@ -17,10 +17,6 @@ def top(request):
 
     return render(request, 'predictor/topplayers.html', context)
 
-
-def testing(request):
-    generate_predictions()
-    return HttpResponse('Request received')
 
 
 

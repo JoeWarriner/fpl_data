@@ -1,3 +1,0 @@
-- Change / migrate model so that we can store a points / unit value field.
-- Add forms to query data more effectively
-- Sort out data pipeline.
