@@ -18,7 +18,7 @@ from main.views import Home
 from django.urls import path , include
 
 urlpatterns = [
-    path('predictor/', include('predictor.urls')),
+    path('predictor/', include('apps.predictor.urls')),
     path('admin/', admin.site.urls),
     path('', Home.as_view(), name = 'home')
 ]

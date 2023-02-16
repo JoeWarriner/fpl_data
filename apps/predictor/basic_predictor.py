@@ -1,4 +1,4 @@
-from predictor.models import Player, PlayerFixture
+from apps.predictor.models import Player, PlayerFixture
 import pandas as pd
 
 

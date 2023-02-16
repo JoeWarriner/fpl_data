@@ -1,5 +1,4 @@
 
-from predictor.models import Player, PlayerFixture, Team
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestRegressor
@@ -7,7 +6,7 @@ from sklearn.preprocessing import OneHotEncoder
 import statsmodels.api as sm
 from statsmodels.regression.mixed_linear_model import MixedLM
 
-from predictor.models import Player, PlayerFixture, Team
+from apps.predictor.models import Player, PlayerFixture, Team
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt 

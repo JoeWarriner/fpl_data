@@ -1,9 +1,10 @@
 from turtle import position
 from django.shortcuts import render
 from django.views import View
-from predictor.models import Player
-from predictor.prediction_models.regression_predictor import generate_predictions
-from predictor.basic_predictor import get_latest_predictions
+
+from apps.predictor.models import Player
+from apps.predictor.prediction_models.regression_predictor import generate_predictions
+from apps.predictor.basic_predictor import get_latest_predictions
 
 
 class TopPlayers(View):
