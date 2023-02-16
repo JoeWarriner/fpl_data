@@ -1,6 +1,7 @@
 from django.urls import path
-from . import views
+from predictor.views import TopPlayers
+
 
 urlpatterns = [
-    path('', views.top, name = 'topplayers')
+    path('', TopPlayers.as_view())
 ]
