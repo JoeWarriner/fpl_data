@@ -3,14 +3,11 @@ from django.shortcuts import render
 from django.views import View
 
 from apps.predictor.models import Player
-from apps.predictor.prediction_models.regression_predictor import generate_predictions
-from apps.predictor.basic_predictor import get_latest_predictions
 
 
 class TopPlayers(View):
 
     def get(self, request):
-        get_latest_predictions()
         context = {
             'positions':{} 
         }

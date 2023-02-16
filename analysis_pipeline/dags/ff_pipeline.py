@@ -6,7 +6,6 @@ import requests
 from airflow.models import Variable
 
 
-
 from airflow.providers.google.cloud.hooks.cloud_sql import CloudSQLHook, CloudSQLDatabaseHook
 from airflow.providers.google.cloud.hooks.gcs import GCSHook
 
